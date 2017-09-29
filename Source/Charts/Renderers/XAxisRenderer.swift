@@ -206,6 +206,7 @@ open class XAxisRenderer: AxisRendererBase
         if xAxis.isWordWrapEnabled
         {
             labelMaxSize.width = xAxis.wordWrapWidthPercent * valueToPixelMatrix.a
+            labelMaxSize.width = 40
         }
         
         let entries = xAxis.entries
