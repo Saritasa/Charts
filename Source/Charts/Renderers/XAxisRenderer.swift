@@ -81,8 +81,8 @@ open class XAxisRenderer: AxisRendererBase
         
         xAxis.labelWidth = labelWidth
         xAxis.labelHeight = labelHeight
-        xAxis.labelRotatedWidth = labelRotatedSize.width
-        xAxis.labelRotatedHeight = labelRotatedSize.height
+        xAxis.labelRotatedWidth = min(labelRotatedSize.width, 60)
+        xAxis.labelRotatedHeight = min(labelRotatedSize.height, 60)
     }
     
     open override func renderAxisLabels(context: CGContext)
@@ -189,7 +189,7 @@ open class XAxisRenderer: AxisRendererBase
             let paraStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         #endif
         paraStyle.alignment = .center
-        paraStyle.lineBreakMode = .byWordWrapping
+        //paraStyle.lineBreakMode = .byWordWrapping
         
         let labelAttrs = [NSFontAttributeName: xAxis.labelFont,
             NSForegroundColorAttributeName: xAxis.labelTextColor,
@@ -208,6 +208,10 @@ open class XAxisRenderer: AxisRendererBase
         {
             labelMaxSize.width = xAxis.wordWrapWidthPercent * valueToPixelMatrix.a
             labelMaxSize.height = 40
+            if xAxis.labelRotationAngle == -90 {
+                  labelMaxSize.width = 60
+                labelMaxSize.height = valueToPixelMatrix.a
+            }
         }
         
         let entries = xAxis.entries
