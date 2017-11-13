@@ -207,7 +207,7 @@ open class XAxisRenderer: AxisRendererBase
         if xAxis.isWordWrapEnabled
         {
             labelMaxSize.width = xAxis.wordWrapWidthPercent * valueToPixelMatrix.a
-            labelMaxSize.height = 40
+            labelMaxSize.height = 80
             if xAxis.labelRotationAngle == -90 {
                   labelMaxSize.width = 60
                 labelMaxSize.height = valueToPixelMatrix.a
